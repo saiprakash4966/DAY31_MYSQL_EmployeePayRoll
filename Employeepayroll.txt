@@ -333,3 +333,31 @@ mysql> select * from employee_payroll;
 |  3 | Charly  | NULL         | NULL    |            | M      |    500000 |         0 |           0 |          0 |       0 | 2019-01-01 |
 +----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
 3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set Department = 'Sales' where name = 'Terissa';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+| id | name    | Phone_number | Address | Department | Gender | Basic_Pay | Deduction | Taxable_Pay | Income_Tax | Net_Pay | start      |
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |    100000 |         0 |           0 |          0 |       0 | 2020-01-01 |
+|  2 | Terissa | NULL         | NULL    | Sales      | F      |    400000 |         0 |           0 |          0 |       0 | 2018-01-01 |
+|  3 | Charly  | NULL         | NULL    |            | M      |    500000 |         0 |           0 |          0 |       0 | 2019-01-01 |
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> Insert into employee_payroll (name, Phone_number, Department, Gender, Basic_Pay, Deduction, Taxable_Pay, Income_Tax, Net_Pay,start) values ('Terissa','9060808010', 'Marketing', 'F', '400000', '200000', '10000', '500000', '200000', '2018-01-01');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_payroll;
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+| id | name    | Phone_number | Address | Department | Gender | Basic_Pay | Deduction | Taxable_Pay | Income_Tax | Net_Pay | start      |
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |    100000 |         0 |           0 |          0 |       0 | 2020-01-01 |
+|  2 | Terissa | NULL         | NULL    | Sales      | F      |    400000 |         0 |           0 |          0 |       0 | 2018-01-01 |
+|  3 | Charly  | NULL         | NULL    |            | M      |    500000 |         0 |           0 |          0 |       0 | 2019-01-01 |
+|  4 | Terissa | 9060808010   | ABC     | Marketing  | F      |    400000 |    200000 |       10000 |     500000 |  200000 | 2018-01-01 |
++----+---------+--------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+4 rows in set (0.00 sec)
