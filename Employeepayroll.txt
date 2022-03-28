@@ -181,3 +181,78 @@ mysql> select * from employee_payroll;
 |  3 | Charly  | M      | 500000 | 2019-01-01 |
 +----+---------+--------+--------+------------+
 3 rows in set (0.01 sec)
+mysql> select Avg(salary) from employee_payroll where Gender = 'F' Group By Gender;
++-------------+
+| Avg(salary) |
++-------------+
+|      400000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select Avg(salary) from employee_payroll where Gender = 'M' Group By Gender;
++-------------+
+| Avg(salary) |
++-------------+
+|      300000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select Avg(salary) from employee_payroll Group By Gender;
++-------------+
+| Avg(salary) |
++-------------+
+|      300000 |
+|      400000 |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> select Gender, Avg(salary) from employee_payroll Group By Gender;
++--------+-------------+
+| Gender | Avg(salary) |
++--------+-------------+
+| M      |      300000 |
+| F      |      400000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select Gender, Count(name) from employee_payroll Group By Gender;
++--------+-------------+
+| Gender | Count(name) |
++--------+-------------+
+| M      |           2 |
+| F      |           1 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select Gender, Sum(salary) from employee_payroll Group By Gender;
++--------+-------------+
+| Gender | Sum(salary) |
++--------+-------------+
+| M      |      600000 |
+| F      |      400000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select Sum(salary) from employee_payroll where Gender = 'M' Group By Gender;
++-------------+
+| Sum(salary) |
++-------------+
+|      600000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>  select Max(salary) from employee_payroll where Gender = 'F' Group By Gender;
++-------------+
+| Max(salary) |
++-------------+
+|      400000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select Min(salary) from employee_payroll where Gender = 'M' Group By Gender;
++-------------+
+| Min(salary) |
++-------------+
+|      100000 |
++-------------+
+1 row in set (0.00 sec)
