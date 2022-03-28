@@ -94,4 +94,4 @@ mysql> select * from employee_payroll;
 |  3 | Charly  | 500000 | 2019-01-01 |
 +----+---------+--------+------------+
 3 rows in set (0.00 sec)
-
+mysql>
