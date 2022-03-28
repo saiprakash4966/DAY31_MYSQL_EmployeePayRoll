@@ -125,3 +125,59 @@ mysql> select * from employee_payroll
 |  3 | Charly | 500000 | 2019-01-01 |
 +----+--------+--------+------------+
 2 rows in set (0.00 sec)
+
+mysql>  Alter table employee_payroll Add Gender Char(1) after name;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | NO   |     | NULL    |                |
+| Gender | char(1)      | YES  |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | Gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Bill    | NULL   | 100000 | 2020-01-01 |
+|  2 | Terissa | NULL   | 400000 | 2018-01-01 |
+|  3 | Charly  | NULL   | 500000 | 2019-01-01 |
++----+---------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set Gender = 'F' where name = 'Terissa';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payrollservice;
+ERROR 1146 (42S02): Table 'payrollservice.employee_payrollservice' doesn't exist
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | Gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Bill    | NULL   | 100000 | 2020-01-01 |
+|  2 | Terissa | F      | 400000 | 2018-01-01 |
+|  3 | Charly  | NULL   | 500000 | 2019-01-01 |
++----+---------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set Gender = 'M' where name = 'Bill' or name = 'charly';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+--------+------------+
+| id | name    | Gender | salary | start      |
++----+---------+--------+--------+------------+
+|  1 | Bill    | M      | 100000 | 2020-01-01 |
+|  2 | Terissa | F      | 400000 | 2018-01-01 |
+|  3 | Charly  | M      | 500000 | 2019-01-01 |
++----+---------+--------+--------+------------+
+3 rows in set (0.01 sec)
