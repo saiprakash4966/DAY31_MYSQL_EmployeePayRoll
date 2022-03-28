@@ -41,6 +41,31 @@ mysql> show databases;
 | sys                |
 +--------------------+
 8 rows in set (0.00 sec)
+mysql> use payrollservice;
+Database changed
+
+mysql> drop database payrollservice;
+Query OK, 0 rows affected (0.05 sec)
+
+
+mysql> create database payrollservice;
+Query OK, 1 row affected (0.01 sec)
 
 mysql> use payrollservice;
 Database changed
+mysql> create table employee_payroll (id int not null auto_increment, name varchar(100) not null, salary double not null, start date not null, primary key(id));
+Query OK, 0 rows affected (0.07 sec)
+
+
+mysql> desc employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | NO   |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+
